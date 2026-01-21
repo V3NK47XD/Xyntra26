@@ -1,0 +1,131 @@
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+@font-face {
+  font-family: "XyntraFont";
+  src: url("src/fonts/Xirod.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SHARED BUTTON */
+.register-btn {
+  font-family: 'XyntraFont', sans-serif;
+  background: gold;
+  color: black;
+  border: none;
+  padding: 2rem 5rem;
+  font-weight: 800;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn {
+  margin-top: 2rem;
+  z-index: 2;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle, rgba(168,85,247,0.25), transparent 60%),
+    radial-gradient(circle, rgba(255,215,0,0.2), transparent 50%);
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.xyntra {
+  font-size: 8rem;
+  font-family: 'XyntraFont', sans-serif;
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 0.2em;
+  z-index: 2;
+  position: relative;
+
+  text-shadow:
+    0 0 10px rgba(168, 85, 247, 0.8),
+    0 0 30px rgba(168, 85, 247, 0.7),
+    0 0 60px rgba(168, 85, 247, 0.6),
+    0 0 120px rgba(168, 85, 247, 0.4);
+}
+
+
+.gold {
+  color: gold;
+  text-shadow:
+    0 0 10px rgba(255, 215, 0, 0.9),
+    0 0 30px rgba(255, 215, 0, 0.8),
+    0 0 60px rgba(255, 215, 0, 0.6),
+    0 0 120px rgba(255, 215, 0, 0.5);
+}
+
+/* DOMAINS */
+.domains {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.domain-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.domain-card {
+  background: rgba(255, 215, 0, 0.2);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.domain-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(168,85,247,0.8),
+      0 0 60px rgba(168,85,247,0.6);
+  }
+  50% {
+    text-shadow:
+      0 0 40px rgba(168,85,247,1),
+      0 0 120px rgba(168,85,247,0.9);
+  }
+}
+
+.xyntra {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+.nav-trigger {
+  height: 1px;
+  margin-top: 40px;
+}

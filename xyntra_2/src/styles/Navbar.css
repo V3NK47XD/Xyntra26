@@ -1,0 +1,67 @@
+.nav-btn {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-btn.hide {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.navbar {
+  position: fixed;
+  top: 24px;                 /* 🔥 detached from top */
+  left: 50%;
+  transform: translateX(-50%);
+  height: 64px;
+  padding: 0 50px;
+  width: max-content;        /* 🔥 shrink to content */
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 999px;      /* pill shape */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.15);
+
+  z-index: 200;
+}
+
+
+
+.navbar span {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.nav-item {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* move items away from center */
+.shift-left {
+  transform: translateX(-30px);
+}
+
+.shift-right {
+  transform: translateX(30px);
+}
+
+/* button animation */
+.nav-btn {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.nav-btn.hide {
+  opacity: 0;
+  transform: scale(0.2);
+  pointer-events: none;
+}
+
+.nav-btn.show {
+  opacity: 1;
+  transform: scale(1);
+}

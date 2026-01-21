@@ -1,0 +1,221 @@
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  padding: 20px;
+  width: 100%;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #ffd700, transparent);
+  top: -200px;
+  left: -200px;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8b2fc9, transparent);
+  bottom: -150px;
+  right: -150px;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #ffd700, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+}
+
+/* ---------- CONTENT ---------- */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.hero-content * {
+  color: #ffffff;
+}
+
+.hero-logo {
+  font-size: clamp(3rem, 10vw, 10rem);
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-x {
+  color: #ffd700;
+  text-shadow: 0 0 30px #ffd700, 0 0 60px #ffd700;
+}
+
+.hero-yntra {
+  color: #8b2fc9;
+  text-shadow: 0 0 30px #8b2fc9, 0 0 60px #8b2fc9;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.hero-description {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  opacity: 0.8;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* ---------- CTA ---------- */
+
+.hero-cta {
+  display: inline-block;
+  padding: 20px 60px;
+  background: linear-gradient(135deg, #ffd700, #ffea80);
+  color: #0a0a0a;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-cta span {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-cta:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 50px rgba(255, 215, 0, 0.7);
+}
+
+.cta-shine {
+  position: absolute;
+  inset: -100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  to {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* ---------- SCROLL ---------- */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scroll-arrow {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  border-radius: 20px;
+  position: relative;
+}
+
+.scroll-arrow::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 50%;
+  animation: scroll-down 2s infinite;
+}
+
+@keyframes scroll-down {
+  to {
+    top: 30px;
+    opacity: 0;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+  .orb-1,
+  .orb-2,
+  .orb-3 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-description {
+    margin-bottom: 30px;
+  }
+}
+/* Hide text until GSAP reveals it */
+.hero-subtitle,
+.hero-description {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Hide CTA safely */
+.hero-cta {
+  visibility: hidden;
+}

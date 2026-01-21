@@ -1,0 +1,146 @@
+.timeline-section {
+  min-height: 100vh;
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline-wrapper {
+  position: relative;
+  margin-top: 80px;
+  min-height: 800px;
+}
+
+.timeline-path-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.timeline-particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #FFD700;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px #FFD700,
+    0 0 40px #FFD700;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.timeline-items {
+  position: relative;
+  z-index: 3;
+}
+
+.timeline-item {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.timeline-item.left {
+  text-align: right;
+  padding-right: 55%;
+}
+
+.timeline-item.right {
+  text-align: left;
+  padding-left: 55%;
+}
+
+.timeline-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+}
+
+.card-icon {
+  display: inline-block;
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.card-date {
+  font-size: 0.9rem;
+  color: #8B2FC9;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #8B2FC9;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.card-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(255, 215, 0, 0.1);
+  line-height: 1;
+}
+
+@media (max-width: 968px) {
+  .timeline-path-svg {
+    width: 100px;
+  }
+  
+  .timeline-item.left,
+  .timeline-item.right {
+    padding: 0;
+    text-align: left;
+  }
+  
+  .timeline-item {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 60px 20px;
+  }
+  
+  .timeline-path-svg {
+    display: none;
+  }
+  
+  .timeline-particle {
+    display: none;
+  }
+}

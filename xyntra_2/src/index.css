@@ -1,0 +1,8 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1a001f, #000);
+  overflow-x: hidden;
+}

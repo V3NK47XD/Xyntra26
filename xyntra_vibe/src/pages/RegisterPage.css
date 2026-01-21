@@ -1,0 +1,221 @@
+.register-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.register-bg-orb.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #FFD700, transparent);
+  top: -200px;
+  right: -200px;
+}
+
+.register-bg-orb.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8B2FC9, transparent);
+  bottom: -150px;
+  left: -150px;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.6);
+}
+
+.register-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.register-logo {
+  font-size: 4rem;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+}
+
+.logo-x {
+  color: #FFD700;
+  text-shadow: 0 0 30px #FFD700;
+}
+
+.logo-yntra {
+  color: #8B2FC9;
+  text-shadow: 0 0 30px #8B2FC9;
+}
+
+.register-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #FFD700, #8B2FC9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.register-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.register-info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.info-card:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  transform: translateY(-5px);
+}
+
+.info-card svg {
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.info-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.register-coming-soon {
+  text-align: center;
+  padding: 80px 40px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.coming-soon-content {
+  position: relative;
+  z-index: 2;
+}
+
+.coming-soon-content h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: #FFD700;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.coming-soon-content p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.coming-soon-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+  border-radius: 50%;
+  animation: pulse-animation 2s ease-in-out infinite;
+}
+
+@keyframes pulse-animation {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-logo {
+    font-size: 3rem;
+  }
+  
+  .register-title {
+    font-size: 2rem;
+  }
+  
+  .register-subtitle {
+    font-size: 1rem;
+  }
+  
+  .coming-soon-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .coming-soon-content p {
+    font-size: 1rem;
+  }
+  
+  .back-button {
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

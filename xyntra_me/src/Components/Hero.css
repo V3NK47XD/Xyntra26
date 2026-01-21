@@ -1,0 +1,46 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.hero-content {
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.title {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+.letter {
+  display: inline-block;
+  transform-style: preserve-3d;
+  text-shadow:
+    0 0 20px rgba(155, 93, 229, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.4);
+}
+
+.gold {
+  background: linear-gradient(45deg, #ffd700, #ffb703);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.purple {
+  background: linear-gradient(45deg, #9b5de5, #5f0fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  color: #aaa;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}

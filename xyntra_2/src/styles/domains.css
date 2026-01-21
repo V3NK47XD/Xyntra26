@@ -1,0 +1,123 @@
+.domains-section {
+  min-height: 100vh;
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.domains-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, #FFD700, #8B2FC9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.domain-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 40px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.domain-card:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  filter: blur(60px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.domain-card:hover .card-glow {
+  opacity: 0.1;
+}
+
+.card-icon {
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+}
+
+.domain-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.card-number {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 215, 0, 0.1);
+  transition: color 0.3s ease;
+}
+
+.domain-card:hover .card-number {
+  color: rgba(255, 215, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .domains-section {
+    padding: 60px 20px;
+  }
+  
+  .domains-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,144 @@
+.floating-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50px;
+  padding: 12px 30px;
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+    width: auto;
+  max-width: 90vw;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  display: flex;
+  letter-spacing: 0.05em;
+}
+
+.logo-x-nav {
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700;
+}
+
+.logo-yntra-nav {
+  color: #8B2FC9;
+  text-shadow: 0 0 10px #8B2FC9;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+   gap: 25px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #FFD700, #8B2FC9);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-register-btn {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #0a0a0a;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+}
+
+@media (max-width: 968px) {
+  .navbar-content {
+    gap: 20px;
+  }
+  
+  .navbar-links {
+    gap: 15px;
+  }
+  
+  .nav-link {
+    font-size: 0.8rem;
+  }
+  
+  .navbar-logo {
+    font-size: 1.2rem;
+  }
+   .nav-register-btn {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-navbar {
+    padding: 10px 20px;
+  }
+  
+  .navbar-content {
+    gap: 15px;
+  }
+  
+  .navbar-links {
+    gap: 10px;
+  }
+  
+  .nav-link {
+    font-size: 0.8rem;
+  }
+  
+  .navbar-logo {
+    font-size: 1rem;
+  }
+  
+  .nav-register-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+}
