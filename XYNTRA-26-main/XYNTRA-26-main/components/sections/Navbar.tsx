@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import GradientText from "./gradient-text";
 
 export function Navbar() {
   const [showBtn, setShowBtn] = useState(false);
@@ -30,8 +31,13 @@ export function Navbar() {
           Timeline
         </span>
 
-        <h1 className={`xyntra ${showBtn ? "show" : ""}`} onClick={() => scrollTo("hero")}>
-          XYNTRA
+<h1 className={`xyntra ${showBtn ? "show" : ""}`} onClick={() => scrollTo("hero")}>
+          <GradientText
+            colors={['#f5bc1f', '#cfae56', '#6b3cff', '#3a1c8f']}
+            animationSpeed={3}
+          >
+            XYNTRA
+          </GradientText>
         </h1>
 
         <span className={`nav-item ${showBtn ? "shift-right" : ""}`} onClick={() => scrollTo("domains")}>
@@ -116,19 +122,7 @@ export function Navbar() {
           font-size: 0px;
         }
 
-        .xyntra.show {
-         background: radial-gradient(
-    circle at 50% 50%,
-    #f5bc1f 0%,
-    #cfae56 10%,
-    #cfae56 30%,
-    #6b3cff 55%,
-    #3a1c8f 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  color: transparent;
+.xyntra.show {
           opacity: 1;
           transform: scale(2);
           pointer-events: auto;
