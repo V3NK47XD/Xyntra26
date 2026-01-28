@@ -9,6 +9,8 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion"
+import GradientText from "./gradient-text"
+import DotGrid from "./dot-grid"
 
 function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -75,6 +77,19 @@ export function AboutSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_100%,#4c1d95_0,transparent_80%),radial-gradient(circle_at_70%_0%,#fb923c_0,transparent_48%),linear-gradient(135deg,#020016,#0b041f,#1a0b2b)] opacity-80" />
       </div>
 
+      {/* Dot Grid Effect - React Bits style */}
+      <DotGrid
+        dotSize={3}
+        gap={28}
+        baseColor="rgba(255,255,255,0.4)"
+        activeColor="#FFFFFF"
+        proximity={100}
+        shockRadius={180}
+        shockStrength={2.5}
+        returnSpeed={0.06}
+        className="opacity-60 pointer-events-auto"
+      />
+
       {/* Glow blobs */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.45),transparent_60%)] mix-blend-screen blur-3xl" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.55),transparent_30%)] mix-blend-screen blur-3xl" />
@@ -101,89 +116,31 @@ export function AboutSection() {
           transition={{ duration: 0.8, type: "spring", damping: 20 }}
           className="text-center mb-16 md:mb-24"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          {/* Big Animated Title */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#D4AF37]/40 text-[0.75rem] md:text-sm text-[#D4AF37] bg-[#D4AF37]/10 backdrop-blur-sm"
+            transition={{ duration: 0.8, delay: 0.1, type: "spring", damping: 15 }}
+            className="mb-8"
           >
-            <motion.span
-              animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="h-2 w-2 rounded-full bg-[#D4AF37]"
-            />
-            About XYNTRA
-          </motion.span>
+            <GradientText
+              colors={[
+  '#B8860B', // antique gold
+  '#FFD700', // bright gold
+  '#D4AF37', // classic gold
+  '#8E44AD', // amethyst purple
+  '#6A0DAD', // royal purple
+]}
+  yoyo={false}
 
-          <motion.h2
-            initial={{ opacity: 0, y: 60, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3, type: "spring" }}
-            className="mt-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white"
-          >
-            <motion.span
-              animate={{ 
-                y: [0, -4, 0, 2, 0],
-                rotate: [0, -0.5, 0, 0.5, 0],
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-              }}
-              className="inline-block"
+              animationSpeed={12}
+              showBorder={false}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             >
-              Where
-            </motion.span>{" "}
-            <motion.span
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              animate={{ 
-                y: [0, -6, 0, 3, 0],
-                rotate: [0, 1, 0, -1, 0],
-                scale: [1, 1.02, 1, 0.99, 1],
-              }}
-              style={{ display: "inline-block" }}
-              className="bg-gradient-to-r from-[#D4AF37] via-[#F0E68C] to-[#D4AF37] bg-clip-text text-transparent"
-            >
-              Ideas
-            </motion.span>{" "}
-            <br className="hidden md:block" />
-            <motion.span
-              animate={{ 
-                y: [0, 3, 0, -4, 0],
-                rotate: [0, 0.5, 0, -0.5, 0],
-              }}
-              transition={{ 
-                duration: 4.5, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
-              className="inline-block"
-            >
-              Become
-            </motion.span>{" "}
-            <motion.span
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              animate={{ 
-                y: [0, -5, 0, 4, 0],
-                rotate: [0, -1, 0, 1, 0],
-                scale: [1, 1.03, 1, 0.98, 1],
-              }}
-              style={{ display: "inline-block" }}
-              className="bg-gradient-to-r from-[#F0E68C] via-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent"
-            >
-              Reality
-            </motion.span>
-          </motion.h2>
+              About XYNTRA
+            </GradientText>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 40 }}
@@ -197,260 +154,182 @@ export function AboutSection() {
           </motion.p>
         </motion.div>
 
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mb-16 md:mb-24"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 80, rotateY: -30, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.1,
-                type: "spring",
-                damping: 15,
-              }}
-              drag
-              dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-              dragElastic={0.7}
-              dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
-              whileDrag={{ 
-                scale: 1.08, 
-                zIndex: 50,
-                boxShadow: "0 25px 50px rgba(212, 175, 55, 0.35)",
-                cursor: "grabbing"
-              }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -10,
-                boxShadow: "0 20px 40px rgba(212, 175, 55, 0.2)"
-              }}
-              className="relative p-5 md:p-6 rounded-2xl border border-[#D4AF37]/20 bg-white/[0.03] backdrop-blur-xl overflow-hidden group cursor-grab active:cursor-grabbing"
-            >
-              {/* Hover glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              
-              <div className="relative">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3, type: "spring" }}
-                  className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] bg-clip-text text-transparent"
-                >
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                </motion.div>
-                <div className="text-xs md:text-sm text-white/60 mt-1">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Planet Orbital System */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, type: "spring", damping: 20 }}
-          className="relative flex items-center justify-center mb-16 md:mb-24"
-          style={{ height: "500px" }}
-        >
-          {/* Orbit rings */}
-          {[1, 2, 3, 4, 5].map((ring) => (
-            <motion.div
-              key={ring}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: ring * 0.1 }}
-              className="absolute rounded-full border border-[#D4AF37]/10"
-              style={{
-                width: `${140 + ring * 60}px`,
-                height: `${140 + ring * 60}px`,
-              }}
-            />
-          ))}
-
-          {/* Center Planet - XYNTRA */}
+        {/* Stats and Planet Side by Side */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+          {/* Stats Section - Left */}
           <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", damping: 15 }}
-            className="absolute z-10 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-2 gap-4 md:gap-6 lg:w-1/2"
           >
-            <motion.div
-              animate={{ 
-                boxShadow: [
-                  "0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2)",
-                  "0 0 50px rgba(212, 175, 55, 0.6), 0 0 100px rgba(212, 175, 55, 0.3)",
-                  "0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2)"
-                ]
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-[#D4AF37] via-[#F0E68C] to-[#B8860B] flex items-center justify-center"
-            >
-              <span className="text-[#030014] font-bold text-lg md:text-xl tracking-wider">XYNTRA</span>
-            </motion.div>
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 80, rotateY: -30, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.1,
+                  type: "spring",
+                  damping: 15,
+                }}
+                drag
+                dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                dragElastic={0.7}
+                dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
+                whileDrag={{ 
+                  scale: 1.08, 
+                  zIndex: 50,
+                  boxShadow: "0 25px 50px rgba(212, 175, 55, 0.35)",
+                  cursor: "grabbing"
+                }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -10,
+                  boxShadow: "0 20px 40px rgba(212, 175, 55, 0.2)"
+                }}
+                className="relative p-5 md:p-6 rounded-2xl border border-[#D4AF37]/20 bg-white/[0.03] backdrop-blur-xl overflow-hidden group cursor-grab active:cursor-grabbing"
+              >
+                {/* Hover glow */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+                
+                <div className="relative">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3, type: "spring" }}
+                    className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] bg-clip-text text-transparent"
+                  >
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  </motion.div>
+                  <div className="text-xs md:text-sm text-white/60 mt-1">
+                    {stat.label}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Orbiting Planets */}
-          {orbitingPlanets.map((planet, index) => {
-            const orbitRadius = 110 + 3 * 30
-            const duration = 20 + 3 * 5
-            
-            return (
-              <motion.div
-                key={planet.text}
-                className="absolute"
-                initial={{ opacity: 0, rotate: index * 72 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                animate={{
-                  rotate: [index * 72, index * 72 + 360],
-                }}
-                transition={{
-                  rotate: {
-                    duration: duration,
-                    repeat: Infinity,
-                    ease: "linear",
-                  },
-                  opacity: { duration: 0.5, delay: 0.5 + index * 0.1 }
-                }}
-                style={{
-                  width: `${orbitRadius * 2}px`,
-                  height: `${orbitRadius * 2}px`,
-                }}
-              >
-                <motion.div
-                  className="absolute"
-                  style={{
-                    top: "0%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                  }}
-                  animate={{
-                    rotate: [-(index * 72), -(index * 72 + 360)],
-                  }}
-                  transition={{
-                    duration: duration,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.15 }}
-                    className="flex items-center justify-center px-3 py-2 md:px-4 md:py-2.5 rounded-full border backdrop-blur-sm cursor-pointer"
-                    style={{
-                      borderColor: `${planet.color}50`,
-                      backgroundColor: `${planet.color}15`,
-                      boxShadow: `0 0 20px ${planet.color}30`,
-                    }}
-                  >
-                    <span 
-                      className="text-[10px] md:text-xs font-medium whitespace-nowrap"
-                      style={{ color: planet.color }}
-                    >
-                      {planet.text}
-                    </span>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            )
-          })}
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, type: "spring", damping: 20 }}
-          className="text-center"
-        >
+          {/* Planet Orbital System - Right */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-block p-8 md:p-12 rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-br from-[#D4AF37]/10 to-transparent backdrop-blur-xl"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, type: "spring", damping: 20 }}
+            className="relative flex items-center justify-center lg:w-1/2"
+            style={{ height: "450px" }}
           >
-            <motion.h3
-              animate={{ 
-                textShadow: [
-                  "0 0 20px rgba(212, 175, 55, 0.3)",
-                  "0 0 40px rgba(212, 175, 55, 0.5)",
-                  "0 0 20px rgba(212, 175, 55, 0.3)"
-                ]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
-            >
-              Ready to Build Something Amazing?
-            </motion.h3>
-            
-            <p className="text-white/70 mb-8 max-w-xl mx-auto">
-              Join 500+ hackers, compete for ₹50K+ in prizes, and turn your ideas into reality.
-            </p>
-            
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            {/* Orbit rings */}
+            {[1, 2, 3, 4, 5].map((ring) => (
+              <motion.div
+                key={ring}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: ring * 0.1 }}
+                className="absolute rounded-full border border-[#D4AF37]/10"
+                style={{
+                  width: `${120 + ring * 50}px`,
+                  height: `${120 + ring * 50}px`,
+                }}
+              />
+            ))}
+
+            {/* Center Planet - XYNTRA */}
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 0 30px rgba(212, 175, 55, 0.4)"
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-[#D4AF37] font-semibold text-sm md:text-base transition-all duration-300 border border-[#D4AF37]/30 hover:border-[#D4AF37]/60"
-              style={{ backgroundColor: "#030014" }}
+              transition={{ duration: 0.6, type: "spring", damping: 15 }}
+              className="absolute z-10 flex items-center justify-center"
             >
-              <motion.span
-                className="relative flex h-3 w-3"
+              <motion.div
+                animate={{ 
+                  boxShadow: [
+                    "0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2)",
+                    "0 0 50px rgba(212, 175, 55, 0.6), 0 0 100px rgba(212, 175, 55, 0.3)",
+                    "0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2)"
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-[#D4AF37] via-[#F0E68C] to-[#B8860B] flex items-center justify-center"
               >
-                <motion.span
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.75, 0, 0.75] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="absolute inline-flex h-full w-full rounded-full bg-[#D4AF37]"
-                />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#D4AF37]" />
-              </motion.span>
-              Register Now for XYNTRA
-              <motion.svg
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </motion.svg>
-            </motion.button>
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-4 text-xs md:text-sm text-white/50"
-            >
-              Early-bird registrations close soon — secure your team&apos;s spot
-            </motion.p>
+                <span className="text-[#030014] font-bold text-base md:text-lg tracking-wider">XYNTRA</span>
+              </motion.div>
+            </motion.div>
+
+            {/* Orbiting Planets */}
+            {orbitingPlanets.map((planet, index) => {
+              const orbitRadius = 95 + 3 * 25
+              const duration = 20 + 3 * 5
+              
+              return (
+                <motion.div
+                  key={planet.text}
+                  className="absolute"
+                  initial={{ opacity: 0, rotate: index * 72 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  animate={{
+                    rotate: [index * 72, index * 72 + 360],
+                  }}
+                  transition={{
+                    rotate: {
+                      duration: duration,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                    opacity: { duration: 0.5, delay: 0.5 + index * 0.1 }
+                  }}
+                  style={{
+                    width: `${orbitRadius * 2}px`,
+                    height: `${orbitRadius * 2}px`,
+                  }}
+                >
+                  <motion.div
+                    className="absolute"
+                    style={{
+                      top: "0%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                    }}
+                    animate={{
+                      rotate: [-(index * 72), -(index * 72 + 360)],
+                    }}
+                    transition={{
+                      duration: duration,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.15 }}
+                      className="flex items-center justify-center px-3 py-2 md:px-4 md:py-2.5 rounded-full border backdrop-blur-sm cursor-pointer"
+                      style={{
+                        borderColor: `${planet.color}50`,
+                        backgroundColor: `${planet.color}15`,
+                        boxShadow: `0 0 20px ${planet.color}30`,
+                      }}
+                    >
+                      <span 
+                        className="text-[10px] md:text-xs font-medium whitespace-nowrap"
+                        style={{ color: planet.color }}
+                      >
+                        {planet.text}
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              )
+            })}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
